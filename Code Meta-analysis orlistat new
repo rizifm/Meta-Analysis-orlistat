@@ -61,9 +61,6 @@ summary(dat2$vi)
 
 plot(dat2$yi, dat2$vi)
 
-# which(dat2$vi <= 0)
-# dat2_clean <- dat2[dat2$vi > 0, ]
-
 bmi.m1 <- rma(yi, vi, data = dat2)
 
 
