@@ -137,7 +137,7 @@ stripchart(dat2$yi ~ dat2$dose,
            xlim = c(.5,2.5),
            xlab = 'Dose (mg/day)',
            ylab = 'Reduction in BMI',
-           main = 'Estimate = -0.06, P = 0.87')
+           main = 'Estimate = -0.08, P = 0.85')
 
 dose.ave <- aggregate(dat2$yi, by = list(dose = dat2$dose), mean)
 dose.sd <- aggregate(dat2$yi, by = list(dose = dat2$dose), sd)
@@ -158,7 +158,7 @@ plot(dat3$duration, dat3$yi,
      lwd = 2,
      xlab = 'Duration (month)',
      ylab = 'Reduction in BMI',
-     main = 'Estimate = 0.07, P = 0.03')
+     main = 'Estimate = 0.09, P = 0.04')
 bmi.m3
 abline(bmi.m3$b[1], bmi.m3$b[2],
        lty = 2,
@@ -183,7 +183,7 @@ stripchart(dat3$yi ~ dat3$age,
            xlim = c(.5,2.5),
            xlab = 'Age Group',
            ylab = 'Reduction in BMI',
-           main = 'Estimate = -0.18, P = 0.60')
+           main = 'Estimate = -0.24, P = 0.55')
 bmi.m3
 age.ave <- aggregate(dat3$yi, by = list(age.ave = dat3$age), mean)
 age.sd <- aggregate(dat3$yi, by = list(age = dat3$age), sd)
@@ -211,7 +211,7 @@ stripchart(dat3$yi ~ x,
            xlim = c(.5,2.5),
            xlab = 'Co-morbidities',
            ylab = 'Reduction in BMI',
-           main = 'Estimate = 0.11, P = 0.69')
+           main = 'Estimate = 0.01, P = 0.98')
 
 comorbid.ave <- aggregate(dat3$yi, by = list(comorbid = dat3$age), mean)
 comorbid.sd <- aggregate(dat3$yi, by = list(comorbid = dat3$age), sd)
@@ -282,9 +282,6 @@ mtext('B', at = -4, line = 1.2, adj = 1)
 dev.off()
 
 
-
-
-
 # for BMI.m4 data
 dat2$exercise <- as.factor(dat2$exercise)
 dat2$counseling <- as.factor(dat2$counseling)
@@ -311,7 +308,7 @@ stripchart(yi ~ factor(exercise, labels = c('Without', 'With')),
            lwd = 2,
            xlab = 'Exercise',
            ylab = 'Reduction in BMI',
-           main = 'Estimate = 0.82, P = 0.02')
+           main = 'Estimate = 0.79, P = 0.05')
 
 # Added average line
 ex.ave <- aggregate(dat2$yi, by = list(exercise = dat2$exercise), mean)
@@ -320,46 +317,7 @@ ex.sd  <- aggregate(dat2$yi, by = list(exercise = dat2$exercise), sd)
 points(1:2, ex.ave$x, pch = 19, col = 'red')
 segments(1:2, ex.ave$x - ex.sd$x, 1:2, ex.ave$x + ex.sd$x, col = 'red', lwd = 1.5)
 
-dat2$counseling <- as.factor(dat2$counseling)
-xc <- c('Without', 'With')[dat3$counseling]
-stripchart(yi ~ factor(counseling, labels = c('Without', 'With')),
-           data = dat2,
-           vertical = TRUE,
-           method = 'jitter',
-           jitter = 0.2,
-           pch = 1,
-           cex = dat2$vi + 1,
-           lwd = 2,
-           xlab = 'Counseling',
-           ylab = 'Reduction in BMI',
-           main = 'Estimate = -0.72, P = 0.10')
 
-coun.ave <- aggregate(dat2$yi, by = list(counseling = dat2$counseling), mean)
-coun.sd  <- aggregate(dat2$yi, by = list(counseling = dat2$counseling), sd)
-
-points(1:2, coun.ave$x, pch = 19, col = 'red')
-segments(1:2, coun.ave$x - coun.sd$x, 1:2, coun.ave$x + coun.sd$x, col = 'red', lwd = 1.5)
-
-dat2$diet_note <- as.factor(dat2$diet_note)
-
-stripchart(dat2$yi ~ dat2$diet_note,
-           vertical = TRUE,
-           method = 'jitter',
-           pch = 1,
-           cex = dat2$vi + 1,
-           lwd = 2,
-           xlab = 'Diet Description',
-           ylab = 'Reduction in BMI',
-           main = 'BMI Reduction per Diet Note')
-
-# Added mean if suitable
-dietnote.ave <- aggregate(dat2$yi, by = list(note = dat2$diet_note), mean)
-dietnote.sd  <- aggregate(dat2$yi, by = list(note = dat2$diet_note), sd)
-
-points(1:nrow(dietnote.ave), dietnote.ave$x, pch = 19, col = 'red')
-segments(1:nrow(dietnote.ave), dietnote.ave$x - dietnote.sd$x,
-         1:nrow(dietnote.ave), dietnote.ave$x + dietnote.sd$x,
-         col = 'red', lwd = 1.5)
 
 dat2$diet <- as.factor(dat2$diet)
 
@@ -371,7 +329,7 @@ stripchart(dat2$yi ~ dat2$diet,
            lwd = 2,
            xlab = 'Diet Type',
            ylab = 'Reduction in BMI',
-           main = 'Estimate diet reduced = 0.46, P = 0.30')
+           main = 'Estimate diet reduced = 0.45, P = 0.33')
 
 diet.ave <- aggregate(dat2$yi, by = list(diet = dat2$diet), mean)
 diet.sd  <- aggregate(dat2$yi, by = list(diet = dat2$diet), sd)
